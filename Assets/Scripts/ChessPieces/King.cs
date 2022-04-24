@@ -83,7 +83,7 @@ public class King : ChessPiece
             }
         }
         //up
-        if(currentX+1 <tileCountY)
+        if(currentY+1 <tileCountY)
             if(board[currentX,currentY+1]==null || board[currentX,currentY+1].team!= team)
             {
                 r.Add(new Vector2Int(currentX, currentY + 1));
@@ -95,5 +95,102 @@ public class King : ChessPiece
                 r.Add(new Vector2Int(currentX, currentY - 1));
             }
         return r;
+    }
+    public override SpecialMoves GetSpecialMoves(ref ChessPiece[,] board, ref List<Vector2Int[]> moveList, ref List<Vector2Int> availableMoves)
+    {
+        SpecialMoves special = SpecialMoves.None;
+        var KingMove = moveList.Find(m => m[0].x == 4 && m[0].y == ((team == 0) ? 0 :7));
+        var leftRook = moveList.Find(m => m[0].x == 0 && m[0].y == ((team == 0) ? 0 : 7));
+        var rightRook = moveList.Find(m => m[0].x == 7 && m[0].y == ((team == 0) ? 0 : 7));
+        if(KingMove == null && currentX==4 )
+        {
+            // white 
+            if(team==0)
+            {
+                // left rook
+                if (leftRook == null)
+                {
+                    if (board[0, 0].type == ChessPieceType.Rook)
+                    {
+                        if (board[0, 0].team == 0)
+                        {
+                            if (board[3, 0] == null)
+                            {
+                                if (board[2, 0] == null)
+                                {
+                                    if (board[1, 0] == null)
+                                    {
+                                        availableMoves.Add(new Vector2Int(2, 0));
+                                        special = SpecialMoves.castling;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                    //right rook 
+                  if (rightRook == null)
+                   {
+                        if (board[7, 0].type == ChessPieceType.Rook)
+                        {
+                            if (board[7, 0].team == 0)
+                            {
+                                if (board[5, 0] == null)
+                                {
+                                    if (board[6, 0] == null)
+                                    {
+                                            availableMoves.Add(new Vector2Int(6, 0));
+                                            special = SpecialMoves.castling;
+                                    }
+                                }
+                            }
+                        }
+                    }
+            }
+            else
+            {
+                //look left 
+                if (leftRook == null)
+                {
+                    if (board[0, 7].type == ChessPieceType.Rook)
+                    {
+                        if (board[0, 7].team == 1)
+                        {
+                            if (board[3, 7] == null)
+                            {
+                                if (board[2, 7] == null)
+                                {
+                                    if (board[1, 7] == null)
+                                    {
+                                        availableMoves.Add(new Vector2Int(2, 7));
+                                        special = SpecialMoves.castling;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                //right rook 
+                if (rightRook == null)
+                {
+                    if (board[7, 7].type == ChessPieceType.Rook)
+                    {
+                        if (board[7, 7].team == 1)
+                        {
+                            if (board[5, 7] == null)
+                            {
+                                if (board[6, 7] == null)
+                                {
+                                    availableMoves.Add(new Vector2Int(6, 7));
+                                    special = SpecialMoves.castling;
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+        return special;
     }
 }
