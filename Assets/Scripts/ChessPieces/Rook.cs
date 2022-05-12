@@ -8,17 +8,22 @@ public class Rook : ChessPiece
     {
         List<Vector2Int> r = new List<Vector2Int>();
         //down
-        for (int i = currentY-1; i >= 0; i--)
+        for (int i = currentY - 1; i >= 0; i--)
         {
-            if(board[currentX,i]==null)
+            if (board[currentX, i] == null)
             {
                 r.Add(new Vector2Int(currentX, i));
             }
             if (board[currentX, i] != null)
             {
-                if (board[currentX,i].team!= team)
+                if (board[currentX, i].team != team)
                 {
                     r.Add(new Vector2Int(currentX, i));
+                    break;
+                }
+                if (board[currentX, i].team == team)
+                {
+
                     break;
                 }
             }
@@ -38,6 +43,11 @@ public class Rook : ChessPiece
                     r.Add(new Vector2Int(currentX, i));
                     break;
                 }
+                if (board[currentX, i].team == team)
+                {
+
+                    break;
+                }
             }
         }
         //left
@@ -52,6 +62,11 @@ public class Rook : ChessPiece
                 if (board[i, currentY].team != team)
                 {
                     r.Add(new Vector2Int(i, currentY));
+                    break;
+                }
+                if (board[i, currentY].team == team)
+                {
+
                     break;
                 }
             }
@@ -70,10 +85,14 @@ public class Rook : ChessPiece
                     r.Add(new Vector2Int(i, currentY));
                     break;
                 }
+                if (board[i, currentY].team == team)
+                {
+
+                    break;
+                }
             }
         }
 
         return r;
     }
-
 }

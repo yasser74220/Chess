@@ -8,7 +8,7 @@ public class Bishop : ChessPiece
     {
         List<Vector2Int> r = new List<Vector2Int>();
         //top right
-        for(int x = currentX +1 , y =currentY+1; x<tileCountX && y < tileCountY; x++, y++)
+        for (int x = currentX + 1, y = currentY + 1; x < tileCountX && y < tileCountY; x++, y++)
         {
             if (board[x, y] == null)
             {
@@ -16,9 +16,14 @@ public class Bishop : ChessPiece
             }
             else
             {
-                if(board[x,y].team != team)
+                if (board[x, y].team != team)
                 {
                     r.Add(new Vector2Int(x, y));
+                    break;
+                }
+                if (board[x, y].team == team)
+                {
+
                     break;
                 }
             }
@@ -39,6 +44,11 @@ public class Bishop : ChessPiece
                     r.Add(new Vector2Int(x, y));
                     break;
                 }
+                if (board[x, y].team == team)
+                {
+
+                    break;
+                }
             }
         }
 
@@ -57,11 +67,16 @@ public class Bishop : ChessPiece
                     r.Add(new Vector2Int(x, y));
                     break;
                 }
+                if (board[x, y].team == team)
+                {
+
+                    break;
+                }
             }
         }
         //bottom left
 
-        for (int x = currentX - 1, y = currentY - 1; x >=0 && y >= 0; x--, y--)
+        for (int x = currentX - 1, y = currentY - 1; x >= 0 && y >= 0; x--, y--)
         {
             if (board[x, y] == null)
             {
@@ -72,6 +87,11 @@ public class Bishop : ChessPiece
                 if (board[x, y].team != team)
                 {
                     r.Add(new Vector2Int(x, y));
+                    break;
+                }
+                if (board[x, y].team == team)
+                {
+
                     break;
                 }
             }

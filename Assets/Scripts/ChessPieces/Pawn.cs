@@ -11,11 +11,13 @@ public class Pawn : ChessPiece
         int direction = (team == 0) ? 1 : -1; 
 
         // go front "one"
-        if (board[currentX,currentY + direction] == null)
+        if (board[currentX,currentY + direction] == null  )
         {
             r.Add(new Vector2Int(currentX, currentY + direction));
-        }
+          
 
+        }
+       
         // "two move"
 
         if (board[currentX, currentY + direction] == null)

@@ -9,7 +9,7 @@ public class King : ChessPiece
         List<Vector2Int> r = new List<Vector2Int>();
         if (currentX + 1 < tileCountX) // right
         {
-            if (board[currentX + 1, currentY] == null)
+            if (board[currentX + 1, currentY] == null  )
             {
                 r.Add(new Vector2Int(currentX + 1, currentY));
             }
@@ -22,7 +22,7 @@ public class King : ChessPiece
             // top right
             if (currentY + 1 < tileCountY)
             {
-                if (board[currentX + 1, currentY + 1] == null)
+                if (board[currentX + 1, currentY + 1] == null  )
                 {
                     r.Add(new Vector2Int(currentX + 1, currentY + 1));
                 }
@@ -47,7 +47,7 @@ public class King : ChessPiece
         //left
         if (currentX - 1 >= 0)
         {
-            if (board[currentX - 1, currentY] == null)
+            if (board[currentX - 1, currentY] == null )
             {
                 r.Add(new Vector2Int(currentX - 1, currentY));
             }
@@ -60,7 +60,7 @@ public class King : ChessPiece
             // top left
             if (currentY + 1 < tileCountY)
             {
-                if (board[currentX - 1, currentY + 1] == null)
+                if (board[currentX - 1, currentY + 1] == null )
                 {
                     r.Add(new Vector2Int(currentX - 1, currentY + 1));
                 }

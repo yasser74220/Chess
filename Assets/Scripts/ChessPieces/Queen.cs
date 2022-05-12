@@ -21,6 +21,10 @@ public class Queen : ChessPiece
                     r.Add(new Vector2Int(currentX, i));
                     break;
                 }
+                else if (board[currentX, i].team == team)
+                {
+                    break;
+                }
             }
         }
         //up
@@ -36,6 +40,10 @@ public class Queen : ChessPiece
                 if (board[currentX, i].team != team)
                 {
                     r.Add(new Vector2Int(currentX, i));
+                    break;
+                }
+                else if (board[currentX, i].team == team)
+                {
                     break;
                 }
             }
@@ -54,6 +62,10 @@ public class Queen : ChessPiece
                     r.Add(new Vector2Int(i, currentY));
                     break;
                 }
+                else if (board[i, currentY].team == team)
+                {
+                    break;
+                }
             }
         }
         //right
@@ -70,6 +82,10 @@ public class Queen : ChessPiece
                     r.Add(new Vector2Int(i, currentY));
                     break;
                 }
+                else if (board[i, currentY].team == team)
+                {
+                    break;
+                }
             }
         }
         //top right
@@ -84,6 +100,11 @@ public class Queen : ChessPiece
                 if (board[x, y].team != team)
                 {
                     r.Add(new Vector2Int(x, y));
+                    break;
+                }
+                else if (board[x, y].team == team)
+                {
+
                     break;
                 }
             }
@@ -104,6 +125,11 @@ public class Queen : ChessPiece
                     r.Add(new Vector2Int(x, y));
                     break;
                 }
+                else if (board[x, y].team == team)
+                {
+
+                    break;
+                }
             }
         }
 
@@ -122,6 +148,11 @@ public class Queen : ChessPiece
                     r.Add(new Vector2Int(x, y));
                     break;
                 }
+                if (board[x, y].team == team)
+                {
+
+                    break;
+                }
             }
         }
         //bottom left
@@ -137,6 +168,10 @@ public class Queen : ChessPiece
                 if (board[x, y].team != team)
                 {
                     r.Add(new Vector2Int(x, y));
+                    break;
+                }
+                else if (board[x, y].team == team)
+                {
                     break;
                 }
             }
